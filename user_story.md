@@ -17,4 +17,4 @@ I'd like to see if a bike is working
 Objects | Messages
 ---------- | ----------
 person |
-bike | bike_check_if_working, in_use
+bike | working?, in_use
