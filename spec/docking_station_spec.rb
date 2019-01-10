@@ -21,13 +21,12 @@ describe DockingStation do
     it 'should .dock the bike' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.bike_collection[-1]).to eq bike
     end
 
     it 'should raise an error when docking if there is already too much bike' do
-      bike = Bike.new
-      subject.dock(bike)
-      expect{subject.dock(bike)}.to raise_error("Sorry, I am already too much of bike.")
+      20.times { subject.dock(Bike.new) }
+      expect{subject.dock(Bike.new)}.to raise_error("Sorry, I am already too much of bike.")
     end
   end
 
