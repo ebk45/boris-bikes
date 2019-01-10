@@ -23,6 +23,12 @@ describe DockingStation do
       subject.dock(bike)
       expect(subject.bike).to eq bike
     end
+
+    it 'should raise an error when docking if there is already too much bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect{subject.dock(bike)}.to raise_error("Sorry, I am already too much of bike.")
+    end
   end
 
   describe '#working' do

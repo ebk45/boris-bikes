@@ -11,7 +11,11 @@ class DockingStation
     end
   end
 
-  def dock(bike)
-    @bike = bike
+  def dock(docking_bike)
+    if bike
+      fail "Sorry, I am already too much of bike."
+    else
+      @bike = docking_bike
+    end
   end
 end
