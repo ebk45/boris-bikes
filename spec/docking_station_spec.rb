@@ -13,7 +13,7 @@ describe DockingStation do
     end
 
     it 'should raise an error if there is no bike' do
-      expect{subject.release_bike}.to raise_error("There are no bikes, you failure.")
+      expect{subject.release_bike}.to raise_error("There are no bikes, sorry love.")
     end
   end
 
@@ -26,7 +26,7 @@ describe DockingStation do
 
     it 'should raise an error when docking if there is already too much bike' do
       20.times { subject.dock(Bike.new) }
-      expect{subject.dock(Bike.new)}.to raise_error("Sorry, I am already too much of bike.")
+      expect{subject.dock(Bike.new)}.to raise_error("Sorry, I am already full of bikes.")
     end
   end
 

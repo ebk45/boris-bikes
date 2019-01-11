@@ -8,19 +8,29 @@ class DockingStation
   end
 
   def release_bike
-    if bike_collection == []
-      fail "There are no bikes, you failure."
+    if empty?
+      fail "There are no bikes, sorry love."
     else
       bike_collection.pop
     end
   end
 
   def dock(docking_bike)
-    if bike_collection.count >= 20
-      fail "Sorry, I am already too much of bike."
+    if full?
+      fail "Sorry, I am already full of bikes."
     else
-      @bike_collection.push(docking_bike)
+      @bike_collection << docking_bike
       return docking_bike
     end
   end
+
+  private
+  def full?
+    @bike_collection.count >=20
+  end
+
+  def empty?
+    @bike_collection.empty?
+  end
+
 end
