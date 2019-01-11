@@ -5,6 +5,15 @@ describe DockingStation do
     expect(subject).to respond_to :release_bike
   end
 
+  it 'should set the capacity of the docking station' do
+    capacity = 25
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
+  it 'should use DEFAULT_CAPACITY if no capacity is set' do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
   describe '#release_bike' do
     it 'should release a bike' do
       bike = Bike.new
@@ -25,7 +34,7 @@ describe DockingStation do
     end
 
     it 'should raise an error when docking if there is already too much bike' do
-      20.times { subject.dock(Bike.new) }
+      subject.capacity.times { subject.dock(Bike.new) }
       expect{subject.dock(Bike.new)}.to raise_error("Sorry, I am already full of bikes.")
     end
   end
